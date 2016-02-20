@@ -54,6 +54,7 @@ var itemize = function (msg) {
 				continue
 
 			case 'huomenna':
+			case 'huomen':
 				user.select.date += 86400 // seconds in 1 day
 				continue
 
@@ -71,8 +72,6 @@ var itemize = function (msg) {
 
 		var time = moment.unix(user.select.date).format('HHmm')
 		var day = moment.unix(user.select.date).format('dddd').toLowerCase()
-
-		console.log(day)
 
 		// if user requested evening menu
 		if (user.select.menu.evening) time = 1620
