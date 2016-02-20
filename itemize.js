@@ -74,6 +74,8 @@ var itemize = function (msg) {
 		var time = moment.unix(user.select.date).format('HHmm')
 		var day = moment.unix(user.select.date).format('dddd')
 
+		console.log(day)
+
 		// if user requested evening menu
 		if (user.select.menu.evening) time = 1620
 
