@@ -1,7 +1,7 @@
 
-var moment    = require('moment-timezone').tz.setDefault('Europe/Helsinki')
-var typify    = require('./typify')
-var openhours = require('./openhours')
+var moment       = require('moment-timezone').tz.setDefault('Europe/Helsinki')
+var typify       = require('./typify')
+var openingHours = require('./openhours')
 
 var itemize = function (msg) {
 
@@ -25,7 +25,8 @@ var itemize = function (msg) {
 		'menu': {
 			'salad': false,
 			'soup': false,
-			'evening': false
+			'evening': false,
+			'tomorrow': false
 		},
 		'date': msg.date
 	}
@@ -56,6 +57,7 @@ var itemize = function (msg) {
 			case 'huomenna':
 			case 'huomen':
 				user.opt.date += 86400 // seconds in 1 day
+				user.opt.menu.tomorrow = true
 				continue
 
 			case 'illalla':
@@ -67,35 +69,40 @@ var itemize = function (msg) {
 	}
 
 	// if user did not specify any restaurants,
-	// call the _open -function
+	// call the _findOpens -function
 
-	if (user.opt.cafeCount === 0) user.opt = _open(user.opt)
+	if (user.opt.cafeCount === 0) user.opt = _findOpens(user.opt)
 
-	// finalle send user-object to typifier
+	// finally send user-object to typifier
 
 	typify(user)
 }
 
 // this function checks which cafes were open when user sent msg
 
-var _open = function (opt) {
+var _findOpens = function (opt) {
 
-	var time = moment.unix(opt.date).format('HHmm')
-	var day = moment.unix(opt.date).format('dddd').toLowerCase()
+	var date = moment.unix(opt.date)
+
+	var time = date.format('HHmm')
+	var day = date.format('dddd').toLowerCase()
 
 	// if user requested evening menu
 	if (opt.menu.evening) time = 1620
 
-	for (var cafe in openhours) {
+	// is user requested tomorrow's menus
+	else if (user.opt.menu.tomorrow) time = 1200
 
-		var open = openhours[cafe][day]
+	for (var cafe in openingHours) {
+
+		var open = openingHours[cafe][day]
 
 		// if cafe is not open on this day, continue
 
 		if (!open) continue
 
 		// if cafe has a daily break (like reaktori)
-		// and it is on, continue to next cafe
+		// and the break is on, continue to next cafe
 
 		var pause = open.pause
 
