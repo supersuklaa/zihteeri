@@ -72,7 +72,7 @@ var itemize = function (msg) {
 	if (user.select.cafeCount === 0) {
 
 		var time = moment.unix(user.select.date).format('HHmm')
-		var day = moment.unix(user.select.date).format('dddd')
+		var day = moment.unix(user.select.date).format('dddd').toLowerCase()
 
 		console.log(day)
 
@@ -106,10 +106,15 @@ var _open = function (time, day) {
 	for (var cafe in openhours) {
 
 		var open = openhours[cafe][day]
-		var pause = openhours[cafe][day].pause
+
+		// if cafe is not open this day, continue
+
+		if (!open) continue
 
 		// if cafe has a daily break (like reaktori)
 		// and it is on, continue to next cafe
+
+		var pause = open.pause
 
 		if (pause) {
 			if (time >= pause.from && time < pause.to) {
