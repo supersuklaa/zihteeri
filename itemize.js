@@ -1,6 +1,6 @@
 
 var moment    = require('moment-timezone').tz.setDefault('Europe/Helsinki')
-var reply     = require('./reply')
+var typify    = require('./reply')
 var openhours = require('./openhours')
 
 var itemize = function (msg) {
@@ -66,30 +66,14 @@ var itemize = function (msg) {
 		}
 	}
 
-	// if user did not specify any restaurants
+	// if user did not specify any restaurants,
+	// call the _open -function
 
-	if (user.opt.cafeCount === 0) {
+	if (user.opt.cafeCount === 0) user.opt = _open(user.opt)
 
-		user.opt = _open(user.opt)
+	// finalle send user-object to typifier
 
-		/*
-
-		var time = moment.unix(user.select.date).format('HHmm')
-		var day = moment.unix(user.select.date).format('dddd').toLowerCase()
-
-		// if user requested evening menu
-		if (user.select.menu.evening) time = 1620
-
-		var opencafes = _open(time, day)
-
-		user.select.cafe = opencafes.cafe
-		user.select.cafeCount = opencafes.cafeCount
-
-		*/
-
-	}
-
-	console.log(user)
+	typify(user)
 }
 
 // this function checks which cafes were open when user sent msg
