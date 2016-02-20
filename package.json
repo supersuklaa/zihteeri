@@ -1,6 +1,9 @@
 {
 	"name": "zihteeri",
 	"main": "main.js",
+	"scripts": {
+		"start": "node main.js"
+	},
 	"dependencies": {
 		"express": "latest",
 		"request": "latest",
