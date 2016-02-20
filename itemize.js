@@ -1,6 +1,6 @@
 
 var moment    = require('moment-timezone').tz.setDefault('Europe/Helsinki')
-var typify    = require('./reply')
+var typify    = require('./typify')
 var openhours = require('./openhours')
 
 var itemize = function (msg) {
