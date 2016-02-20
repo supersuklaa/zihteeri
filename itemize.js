@@ -12,7 +12,7 @@ var itemize = function (msg) {
 	user.chat = msg.chat.id
 	user.text = msg.text.toLowerCase().split(' ')
 	
-	user.select = {
+	user.opt = {
 		'cafe': {
 			'reaktori': false,
 			'hertsi': false,
@@ -41,34 +41,38 @@ var itemize = function (msg) {
 			case 'sååsbar':
 			case 'fusion':
 			case 'konehuone':
-				user.select.cafe[user.text[i]] = true
-				user.select.cafeCount++
+				user.opt.cafe[user.text[i]] = true
+				user.opt.cafeCount++
 				continue
 
 			case 'salaatti':
-				user.select.menu.salad = true
+				user.opt.menu.salad = true
 				continue
 
 			case 'keitto':
-				user.select.menu.soup = true
+				user.opt.menu.soup = true
 				continue
 
 			case 'huomenna':
 			case 'huomen':
-				user.select.date += 86400 // seconds in 1 day
+				user.opt.date += 86400 // seconds in 1 day
 				continue
 
 			case 'illalla':
 			case 'iltaruoka':
 			case 'ilta':
-				user.select.menu.evening = true
+				user.opt.menu.evening = true
 				continue
 		}
 	}
 
 	// if user did not specify any restaurants
 
-	if (user.select.cafeCount === 0) {
+	if (user.opt.cafeCount === 0) {
+
+		user.opt = _open(user.opt)
+
+		/*
 
 		var time = moment.unix(user.select.date).format('HHmm')
 		var day = moment.unix(user.select.date).format('dddd').toLowerCase()
@@ -81,30 +85,28 @@ var itemize = function (msg) {
 		user.select.cafe = opencafes.cafe
 		user.select.cafeCount = opencafes.cafeCount
 
+		*/
+
 	}
 
 	console.log(user)
 }
 
-var _open = function (time, day) {
+// this function checks which cafes were open when user sent msg
 
-	var output = {
-		'cafe': {
-			'reaktori': false,
-			'hertsi': false,
-			'newton': false,
-			'sååsbar': false,
-			'fusion': false,
-			'konehuone': false
-		},
-		'cafeCount': 0
-	}
+var _open = function (opt) {
+
+	var time = moment.unix(opt.date).format('HHmm')
+	var day = moment.unix(opt.date).format('dddd').toLowerCase()
+
+	// if user requested evening menu
+	if (opt.menu.evening) time = 1620
 
 	for (var cafe in openhours) {
 
 		var open = openhours[cafe][day]
 
-		// if cafe is not open this day, continue
+		// if cafe is not open on this day, continue
 
 		if (!open) continue
 
@@ -119,16 +121,18 @@ var _open = function (time, day) {
 			}
 		}
 
+		// finally, check if cafe is open 
+
 		if (time >= open.from && time < open.to) {
 
-			output.cafe[cafe] = true
-			output.cafeCount++
+			opt.cafe[cafe] = true
+			opt.cafeCount++
 
 		}
 
 	}
 
-	return output
+	return opt
 	
 }
 
