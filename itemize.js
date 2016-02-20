@@ -91,7 +91,7 @@ var _findOpens = function (opt) {
 	if (opt.menu.evening) time = 1620
 
 	// is user requested tomorrow's menus
-	else if (user.opt.menu.tomorrow) time = 1200
+	else if (opt.menu.tomorrow) time = 1200
 
 	for (var cafe in openingHours) {
 
