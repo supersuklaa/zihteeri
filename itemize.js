@@ -32,9 +32,7 @@ var itemize = function (msg) {
 
 	// loop tru parameters
 
-	for (var i in user.text.length) {
-
-		if (i === 0) continue // skip '/ruoka' -command
+	for (var i = 1; i < user.text.length; i++) {
 
 		switch (user.text[i]) {
 			case 'reaktori':
