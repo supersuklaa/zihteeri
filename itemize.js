@@ -75,7 +75,7 @@ var itemize = function (msg) {
 
 	// finally send user-object to typifier
 
-	typify(user)
+	console.log(user)
 }
 
 // this function checks which cafes were open when user sent msg
