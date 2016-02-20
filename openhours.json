@@ -1,0 +1,167 @@
+{
+	"newton": {
+		"monday": {
+			"from": 1030,
+			"to": 1600
+		},
+		"tuesday": {
+			"from": 1030,
+			"to": 1600
+		},
+		"wednesday": {
+			"from": 1030,
+			"to": 1600
+		},
+		"thursday": {
+			"from": 1030,
+			"to": 1600
+		},
+		"friday": {
+			"from": 1030,
+			"to": 1500
+		}
+	},
+
+	"sååsbar": {
+		"monday": {
+			"from": 1030,
+			"to": 1900
+		},
+		"tuesday": {
+			"from": 1030,
+			"to": 1900
+		},
+		"wednesday": {
+			"from": 1030,
+			"to": 1900
+		},
+		"thursday": {
+			"from": 1030,
+			"to": 1900
+		},
+		"friday": {
+			"from": 1030,
+			"to": 1900
+		},
+		"saturday": {
+			"from": 1030,
+			"to": 1500
+		}
+	},
+
+	"konehuone": {
+		"monday": {
+			"from": 1030,
+			"to": 1430
+		},
+		"tuesday": {
+			"from": 1030,
+			"to": 1430
+		},
+		"wednesday": {
+			"from": 1030,
+			"to": 1430
+		},
+		"thursday": {
+			"from": 1030,
+			"to": 1430
+		},
+		"friday": {
+			"from": 1030,
+			"to": 1430
+		}
+	},
+
+	"fusion": {
+		"monday": {
+			"from": 1030,
+			"to": 1900
+		},
+		"tuesday": {
+			"from": 1030,
+			"to": 1900
+		},
+		"wednesday": {
+			"from": 1030,
+			"to": 1900
+		},
+		"thursday": {
+			"from": 1030,
+			"to": 1900
+		},
+		"friday": {
+			"from": 1030,
+			"to": 1900
+		},
+		"saturday": {
+			"from": 1100,
+			"to": 1400
+		}
+	},
+
+	"hertsi": {
+		"monday": {
+			"from": 1030,
+			"to": 1500
+		},
+		"tuesday": {
+			"from": 1030,
+			"to": 1500
+		},
+		"wednesday": {
+			"from": 1030,
+			"to": 1500
+		},
+		"thursday": {
+			"from": 1030,
+			"to": 1500
+		},
+		"friday": {
+			"from": 1030,
+			"to": 1500
+		}
+	},
+
+	"reaktori": {
+		"monday": {
+			"from": 1030,
+			"to": 1800,
+			"pause": {
+				"from": 1500,
+				"to": 1600
+			}
+		},
+		"tuesday": {
+			"from": 1030,
+			"to": 1800,
+			"pause": {
+				"from": 1500,
+				"to": 1600
+			}
+		},
+		"wednesday": {
+			"from": 1030,
+			"to": 1800,
+			"pause": {
+				"from": 1500,
+				"to": 1600
+			}
+		},
+		"thursday": {
+			"from": 1030,
+			"to": 1800,
+			"pause": {
+				"from": 1500,
+				"to": 1600
+			}
+		},
+		"friday": {
+			"from": 1030,
+			"to": 1600
+		},
+		"saturday": {
+			"from": 1100,
+			"to": 1400
+		}
+	}
+}
