@@ -39,10 +39,10 @@ var parser = function (kitchen, useropt, callback) {
 				var meal = json.MealOptions[i].MenuItems[0].Name
 				var diets = json.MealOptions[i].MenuItems[0].Diets
 
-				// skip to the next meal if is user requested
-				// vegetarian meals, and this isn't one
+				// if user has requested special menus
 
 				if (useropt.menu.vege && diets.indexOf('KA') < 0) continue
+				if (useropt.menu.soup && meal.indexOf('keitto') < 0) continue
 
 				if (meal) meals.push(meal.trim())
 			}
