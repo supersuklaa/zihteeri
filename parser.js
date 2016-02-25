@@ -5,11 +5,11 @@ var reaktori = require('./parsers/reaktori')
 
 module.exports = {
 
-	Newton: juvenes.Newton,
-	Sååsbar: juvenes.Sååsbar,
-	Fusion: juvenes.Fusion,
-	Konehuone: juvenes.Konehuone,
-	Hertsi: hertsi,
-	Reaktori: reaktori
+	newton: juvenes.Newton,
+	sååsbar: juvenes.Sååsbar,
+	fusion: juvenes.Fusion,
+	konehuone: juvenes.Konehuone,
+	hertsi: hertsi,
+	reaktori: reaktori
 
 }
