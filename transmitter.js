@@ -12,8 +12,6 @@ module.exports = {
 
 		var url = botURL + '/sendMessage'
 
-		console.log(params)
-
 		request.post(url, {form: params}, callback)
 
 	}
