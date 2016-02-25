@@ -10,7 +10,12 @@ module.exports = function (user) {
 
 	for (var cafe in user.opt.cafe) {
 
-		if (user.opt.cafe[cafe]) cafes.push(cafe)
+		if (user.opt.cafe[cafe]) {
+
+			cafe = cafe.charAt(0).toUpperCase() + cafe.slice(1)
+			cafes.push(cafe)
+
+		}
 
 	}
 
