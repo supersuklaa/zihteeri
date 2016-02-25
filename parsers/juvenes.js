@@ -37,7 +37,7 @@ var parser = function (kitchen, useropt, callback) {
 			
 			for (var i in json.MealOptions) {
 				var meal = json.MealOptions[i].MenuItems[0].Name
-				var diets = json.MealOptions[i].MenuItems[0].Diets
+				var diets = json.MealOptions[i].MenuItems[0].Diets.split(',')
 
 				// if user has requested special menus
 
