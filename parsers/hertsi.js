@@ -1,5 +1,5 @@
 
-var restaurant = require('../resources/restaurants').hertsi
+//var restaurant = require('../resources/restaurants').hertsi
 var request    = require('request')
 var moment     = require('moment-timezone').tz.setDefault('Europe/Helsinki')
 
