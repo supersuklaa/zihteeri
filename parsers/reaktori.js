@@ -19,7 +19,7 @@ var _cleaner = function (meal) {
 
 }
 
-var _parsemeals = function (menu, opt) {
+var _parsemeals = function (menu, useropt) {
 
 	var meals = []
 
@@ -39,7 +39,7 @@ var _parsemeals = function (menu, opt) {
 
 	// offer only 'iltaruoka' if evening menu is requested
 
-	if (opt.evening) categories = ['Iltaruoka']
+	if (useropt.evening) categories = ['Iltaruoka']
 
 	for (var i in menu) {
 
@@ -54,9 +54,7 @@ var _parsemeals = function (menu, opt) {
 	return meals
 }
 
-module.exports = function (callback, opt) {
-
-	console.log(opt)
+module.exports = function (callback, useropt) {
 
 	var date = moment().format('YYYY-MM-DD')
 
@@ -87,7 +85,7 @@ module.exports = function (callback, opt) {
 				var menus = json.MenusForDays[i].SetMenus
 
 				if (menudate.substring(0, 10) == date) {
-					meals = _parsemeals(menus, opt)
+					meals = _parsemeals(menus, useropt)
 					break
 				}
 
