@@ -56,6 +56,8 @@ var _parsemeals = function (menu, opt) {
 
 module.exports = function (callback, opt) {
 
+	console.log(opt)
+
 	var date = moment().format('YYYY-MM-DD')
 
 	var time = moment().format('HHmm')
