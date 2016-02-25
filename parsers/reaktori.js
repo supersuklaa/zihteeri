@@ -21,6 +21,8 @@ var _cleaner = function (meal) {
 
 var _parsemeals = function (menu, opt) {
 
+	var meals = []
+
 	// we don't want to include all the meals
 
 	var categories = [
@@ -48,6 +50,8 @@ var _parsemeals = function (menu, opt) {
 		if (meal) meals.push(_cleaner(meal))
 				
 	}
+
+	return meals
 }
 
 module.exports = function (callback, opt) {
@@ -81,7 +85,7 @@ module.exports = function (callback, opt) {
 				var menus = json.MenusForDays[i].SetMenus
 
 				if (menudate.substring(0, 10) == date) {
-					_parsemeals(menus, opt)
+					meals = _parsemeals(menus, opt)
 					break
 				}
 
