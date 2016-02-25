@@ -1,15 +1,16 @@
 
-//var restaurant = require('../resources/restaurants').hertsi
-var request    = require('request')
-var moment     = require('moment-timezone').tz.setDefault('Europe/Helsinki')
+var request = require('request')
+var moment  = require('moment-timezone').tz.setDefault('Europe/Helsinki')
 
-module.exports = function (callback) {
+var apiurl = 'http://www.sodexo.fi/ruokalistat/output/daily_json/12812/'
+
+module.exports = function (callback, useropt) {
 
 	// makes an array of hertsi's meals of current date
 
 	var date = moment().format('YYYY/MM/DD')
 	var opt = {
-		url: restaurant.url + date + '/fi',
+		url: apiurl + date + '/fi',
 		json: true
 	}
 
@@ -31,6 +32,20 @@ module.exports = function (callback) {
 				'Vegetarian'
 			]
 
+			// check for special menus
+
+			var usermenu = useropt.menu
+
+			if (usermenu.salad || usermenu.vege || usermenu.soup) {
+
+				categories = []
+
+				if (usermenu.salad) categories.push('Warm Salad')
+				if (usermenu.vege) categories.push('Vegetarian')
+				if (usermenu.soup) categories.push('Soup')
+
+			}
+		
 			// search the titles of meals
 
 			for (var i in json.courses) {

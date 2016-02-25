@@ -23,8 +23,6 @@ var _parsemeals = function (menu, useropt) {
 
 	var meals = []
 
-	// we don't want to include all the meals
-
 	var categories = [
 		'Linjasto',
 		'Kasvislounas',
@@ -37,7 +35,21 @@ var _parsemeals = function (menu, useropt) {
 		'A´la carte',*/
 	]
 
-	// offer only 'iltaruoka' if evening menu is requested
+	// check for special menus
+
+	var usermenu = useropt.menu
+
+	if (usermenu.salad || usermenu.vege || usermenu.soup) {
+
+		categories = []
+
+		if (usermenu.salad) categories.push('Salaattilounas')
+		if (usermenu.vege) categories.push('Kasvislounas')
+		if (usermenu.soup) categories.push('Keittolounas')
+
+	}
+
+	// check for evening menu
 
 	if (useropt.evening) categories = ['Iltaruoka']
 

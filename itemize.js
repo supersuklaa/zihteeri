@@ -22,8 +22,9 @@ var itemize = function (msg) {
 		},
 		'cafeCount': 0,
 		'menu': {
-			'salad'   : false,
-			'soup'    : false
+			'salad': false,
+			'vege' : false, 
+			'soup' : false
 		},
 		'evening' : false,
 		'tomorrow': false,
@@ -44,6 +45,11 @@ var itemize = function (msg) {
 			case 'konehuone':
 				user.opt.cafe[user.text[i]] = true
 				user.opt.cafeCount++
+				continue
+
+			case 'kasvis':
+			case 'kasvisruoka':
+				user.opt.menu.vege = true
 				continue
 
 			case 'salaatti':

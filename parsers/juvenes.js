@@ -1,9 +1,10 @@
 
-//var restaurant = require('../resources/restaurants').juvenes
 var request    = require('request')
 var moment     = require('moment-timezone').tz.setDefault('Europe/Helsinki')
 
-var parser = function (kitchen, callback) {
+var apiurl = 'http://www.juvenes.fi/DesktopModules/Talents.LunchMenu/LunchMenuServices.asmx/GetMenuByDate'
+
+var parser = function (kitchen, useropt, callback) {
 
 	// juvenes' API doesn't offer 100% valid json
 	// so we download the json as a string,
@@ -13,7 +14,7 @@ var parser = function (kitchen, callback) {
 	var date = moment().format('YYYY-MM-DD')
 
 	var opt = {
-		url: restaurant.url +
+		url: apiurl +
 			"?KitchenId=" + kitchen.id +
 			"&MenuTypeId=" + kitchen.menu + 
 			"&date='" + date +
@@ -36,6 +37,13 @@ var parser = function (kitchen, callback) {
 			
 			for (var i in json.MealOptions) {
 				var meal = json.MealOptions[i].MenuItems[0].Name
+				var diets = json.MealOptions[i].MenuItems[0].Diets
+
+				// skip to the next meal if is user requested
+				// vegetarian meals, and this isn't one
+
+				if (useropt.menu.vege && diets.indexOf('KA') < 0) continue
+
 				if (meal) meals.push(meal.trim())
 			}
 
@@ -56,35 +64,35 @@ var parser = function (kitchen, callback) {
 
 module.exports = {
 
-	Newton: function (callback) {
+	Newton: function (callback, useropt) {
 
 		var kitchen = {id: 6, menu: 60}
 
-		parser(kitchen, callback)
+		parser(kitchen, useropt, callback)
 
 	},
 
-	Sååsbar: function (callback) {
+	Sååsbar: function (callback, useropt) {
 
 		var kitchen = {id: 6, menu: 77}
 
-		parser(kitchen, callback)
+		parser(kitchen, useropt, callback)
 
 	},
 
-	Fusion: function (callback) {
+	Fusion: function (callback, useropt) {
 
 		var kitchen = {id: 60038, menu: 3}
 
-		parser(kitchen, callback)
+		parser(kitchen, useropt, callback)
 
 	},
 
-	Konehuone: function (callback) {
+	Konehuone: function (callback, useropt) {
 
 		var kitchen = {id: 60038, menu: 74}
 
-		parser(kitchen, callback)
+		parser(kitchen, useropt, callback)
 
 	}
 }
