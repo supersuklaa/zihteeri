@@ -57,7 +57,7 @@ module.exports = function (callback, opt) {
 	var time = moment().format('HHmm')
 
 	var opt = {
-		url: apiurl.replace('{date}', date)
+		url: apiurl.replace('{date}', date),
 		json: true
 	}
 
