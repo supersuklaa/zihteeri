@@ -23,7 +23,7 @@ module.exports = function (user) {
 
 		var texter = function (err, meals) {
 
-			if (!err) {
+			if (!err && meals.length > 0) {
 
 				text += '<b>' + cafes[i] + ':</b> ' + meals.join(', ') + '\n\n'
 

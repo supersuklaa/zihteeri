@@ -44,6 +44,9 @@ var parser = function (kitchen, useropt, callback) {
 				if (useropt.menu.vege && diets.indexOf('KA') < 0) continue
 				if (useropt.menu.soup && meal.indexOf('keitto') < 0) continue
 
+				// juvenes' api really doesn't care for salads :( so skip
+				if (useropt.menu.salad) continue
+
 				if (meal) meals.push(meal.trim())
 			}
 
