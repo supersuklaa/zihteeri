@@ -68,9 +68,7 @@ var _parsemeals = function (menu, useropt) {
 
 module.exports = function (callback, useropt) {
 
-	var date = moment().format('YYYY-MM-DD')
-
-	var time = moment().format('HHmm')
+	var date = moment.unix(useropt.date).format('YYYY-MM-DD')
 
 	var opt = {
 		url: apiurl.replace('{date}', date),

@@ -8,7 +8,7 @@ module.exports = function (callback, useropt) {
 
 	// makes an array of hertsi's meals of current date
 
-	var date = moment().format('YYYY/MM/DD')
+	var date = moment.unix(useropt.date).format('YYYY/MM/DD')
 	var opt = {
 		url: apiurl + date + '/fi',
 		json: true
@@ -45,7 +45,7 @@ module.exports = function (callback, useropt) {
 				if (usermenu.soup) categories.push('Soup')
 
 			}
-		
+
 			// search the titles of meals
 
 			for (var i in json.courses) {
