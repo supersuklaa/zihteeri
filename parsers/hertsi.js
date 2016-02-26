@@ -46,6 +46,8 @@ module.exports = function (callback, useropt) {
 
 			}
 
+			if (usermenu.luxus) categories = ['Vitality']
+
 			// search the titles of meals
 
 			for (var i in json.courses) {

@@ -24,7 +24,8 @@ var itemize = function (msg) {
 		'menu': {
 			'salad': false,
 			'vege' : false, 
-			'soup' : false
+			'soup' : false,
+			'luxus': false
 		},
 		'evening' : false,
 		'tomorrow': false,
@@ -63,6 +64,14 @@ var itemize = function (msg) {
 
 			case 'keitto':
 				user.opt.menu.soup = true
+				continue
+
+			case 'massikeisari':
+				user.opt.menu.luxus = true
+				user.opt.cafe.fusion = true
+				user.opt.cafe.reaktori = true
+				user.opt.cafe.hertsi = true
+				user.opt.cafeCount = 3
 				continue
 
 			case 'tänään':

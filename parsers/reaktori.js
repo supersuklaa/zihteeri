@@ -49,6 +49,8 @@ var _parsemeals = function (menu, useropt) {
 
 	}
 
+	if (useropt.luxus) categories = ['Special']
+
 	// check for evening menu
 
 	if (useropt.evening) categories = ['Iltaruoka']
