@@ -2,7 +2,7 @@
 var request = require('request')
 var moment  = require('moment-timezone').tz.setDefault('Europe/Helsinki')
 
-var apiurl = 'http://www.sodexo.fi/ruokalistat/output/daily_json/12812/'
+var apiurl = 'http://www.sodexo.fi/ruokalistat/output/daily_json/12812/{date}/fi'
 
 module.exports = function (callback, useropt) {
 
@@ -10,7 +10,7 @@ module.exports = function (callback, useropt) {
 
 	var date = moment.unix(useropt.date).format('YYYY/MM/DD')
 	var opt = {
-		url: apiurl + date + '/fi',
+		url: apiurl.replace('{date}', date),
 		json: true
 	}
 

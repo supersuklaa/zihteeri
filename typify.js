@@ -6,6 +6,8 @@ var maxCafes = 3
 
 module.exports = function (user) {
 
+	// Make a list of desired cafes
+
 	var cafes = []
 
 	for (var cafe in user.opt.cafe) {
@@ -19,27 +21,33 @@ module.exports = function (user) {
 
 	}
 
+	// Add text to bot's response
+
 	var addtext = function (text, i) {
 
 		var texter = function (err, meals) {
 
-			if (!err && meals.length > 0) {
+			if (!err) {
 
-				text += '<b>' + cafes[i] + ':</b> ' + meals.join(', ') + '\n\n'
+				text += '<b>' + cafes[i] + ':</b> '
+
+				if (meals.length > 0) text += meals.join(', ') + '\n\n'
+				else text += '<i>Ruokalistaa ei saatavilla</i>'
 
 			}
 
 			i++
 
 			if (i === cafes.length || i === maxCafes) sendtext(text)
-
-			else addtext(text, i)	
+			else addtext(text, i)
 
 		}
 
 		parser[cafes[i]](texter, user.opt)
 
 	}
+
+	// Send bot's response
 
 	var sendtext = function (text) {
 
@@ -57,7 +65,12 @@ module.exports = function (user) {
 		})
 	}
 
-	if (cafes.length > 0) addtext('', 0)
-	else if (user.text.length === 1) sendtext('Ei ravintoloita auki :(')
+	// Start initializing response
+
+	if (cafes.length > 0) {
+		addtext('', 0)
+	} else {
+		sendtext('Ei ravintoloita auki :(')
+	}
 
 }
