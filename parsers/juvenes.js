@@ -45,8 +45,9 @@ var parser = function (kitchen, useropt, callback) {
 				if (useropt.menu.vege && diets.indexOf('KA') < 0) continue
 				if (useropt.menu.soup && meal.indexOf('keitto') < 0) continue
 				if (useropt.menu.luxus) {
-					if (type.indexOf('FUSION') < 0) continue
-					if (type.indexOf('ROHEE XTRA') < 0) continue
+					if (type.indexOf('FUSION') < 0) {
+						if (type.indexOf('ROHEE XTRA') < 0) continue
+					}
 				}
 
 				// juvenes' api really doesn't care for salads :( so skip
