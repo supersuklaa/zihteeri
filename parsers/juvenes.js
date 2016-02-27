@@ -11,7 +11,7 @@ var parser = function (kitchen, useropt, callback) {
 	// play with it little and
 	// then parse it as json
 
-	var date = '2016-02-23' // moment.unix(useropt.date).format('YYYY-MM-DD')
+	var date = moment.unix(useropt.date).format('YYYY-MM-DD')
 
 	var opt = {
 		url: apiurl +
