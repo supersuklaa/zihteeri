@@ -72,8 +72,8 @@ var itemize = function (msg) {
 				user.opt.menu.luxus = true
 				/*user.opt.cafe.fusion = true
 				user.opt.cafe.reaktori = true
-				user.opt.cafe.hertsi = true*/
-				user.opt.cafeCount = 3
+				user.opt.cafe.hertsi = true
+				user.opt.cafeCount = 3*/
 				continue
 
 			case 'tänään':
@@ -94,12 +94,10 @@ var itemize = function (msg) {
 		}
 	}
 
-	// if user did not specify any timing,
+	// if user did not specify any restaurants,
 	// call the findOpens -module
 
-	if (!user.opt.today && !user.opt.tomorrow && !user.opt.evening) {
-		user.opt = findOpens(user.opt)
-	}
+	if (user.opt.cafeCount === 0) user.opt = findOpens(user.opt)
 
 	// finally send user-object to typifier
 
