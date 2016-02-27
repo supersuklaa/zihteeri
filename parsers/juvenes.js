@@ -11,7 +11,7 @@ var parser = function (kitchen, useropt, callback) {
 	// play with it little and
 	// then parse it as json
 
-	var date = moment.unix(useropt.date).format('YYYY-MM-DD')
+	var date = '2016-02-23' // moment.unix(useropt.date).format('YYYY-MM-DD')
 
 	var opt = {
 		url: apiurl +
@@ -44,9 +44,14 @@ var parser = function (kitchen, useropt, callback) {
 
 				if (useropt.menu.vege && diets.indexOf('KA') < 0) continue
 				if (useropt.menu.soup && meal.indexOf('keitto') < 0) continue
-				if (useropt.menu.luxus && type.indexOf('FUSION') < 0 ) continue
+				if (useropt.menu.luxus) {
+					if (type.indexOf('FUSION') < 0 || type.indexOf('ROHEE XTRA') < 0) {
+						continue
+					}
+				}
 
 				// juvenes' api really doesn't care for salads :( so skip
+
 				if (useropt.menu.salad) continue
 
 				if (meal) meals.push(meal.trim())
