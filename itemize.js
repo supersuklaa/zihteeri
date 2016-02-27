@@ -70,9 +70,9 @@ var itemize = function (msg) {
 			case 'fyffee_löytyy':
 			case 'darrasafka':
 				user.opt.menu.luxus = true
-				user.opt.cafe.fusion = true
+				/*user.opt.cafe.fusion = true
 				user.opt.cafe.reaktori = true
-				user.opt.cafe.hertsi = true
+				user.opt.cafe.hertsi = true*/
 				user.opt.cafeCount = 3
 				continue
 
