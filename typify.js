@@ -32,7 +32,7 @@ module.exports = function (user) {
 				text += '<b>' + cafes[i] + ':</b> '
 
 				if (meals.length > 0) text += meals.join(', ') + '\n\n'
-				else text += '<i>Ruokalistaa ei saatavilla</i>'
+				else text += '<i>Ruokalistaa ei saatavilla</i>' + '\n\n'
 
 			}
 

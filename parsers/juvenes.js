@@ -38,11 +38,13 @@ var parser = function (kitchen, useropt, callback) {
 			for (var i in json.MealOptions) {
 				var meal = json.MealOptions[i].MenuItems[0].Name
 				var diets = json.MealOptions[i].MenuItems[0].Diets.split(',')
+				var type = json.MealOptions[i].Name
 
 				// if user has requested special menus
 
 				if (useropt.menu.vege && diets.indexOf('KA') < 0) continue
 				if (useropt.menu.soup && meal.indexOf('keitto') < 0) continue
+				if (useropt.menu.luxus && type.indexOf('FUSION') < 0 ) continue
 
 				// juvenes' api really doesn't care for salads :( so skip
 				if (useropt.menu.salad) continue
