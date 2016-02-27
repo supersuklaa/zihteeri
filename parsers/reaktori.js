@@ -96,7 +96,7 @@ module.exports = function (callback, useropt) {
 				var menudate = json.MenusForDays[i].Date
 				var menus = json.MenusForDays[i].SetMenus
 
-				if (menudate.substring(0, 10) == date) {
+				if (menudate.substring(0, 10) === date) {
 					meals = _parsemeals(menus, useropt)
 					break
 				}

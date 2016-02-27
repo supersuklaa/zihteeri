@@ -67,10 +67,7 @@ module.exports = function (user) {
 
 	// Start initializing response
 
-	if (cafes.length > 0) {
-		addtext('', 0)
-	} else {
-		sendtext('Ei ravintoloita auki :(')
-	}
+	if (cafes.length > 0) addtext('', 0)
+	else sendtext('Ei ravintoloita auki :(')
 
 }
