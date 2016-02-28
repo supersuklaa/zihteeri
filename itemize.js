@@ -38,6 +38,7 @@ var itemize = function (msg) {
 	for (var i = 1; i < user.text.length; i++) {
 
 		switch (user.text[i]) {
+
 			case 'reaktori':
 			case 'newton':
 			case 'hertsi':
@@ -87,7 +88,9 @@ var itemize = function (msg) {
 			case 'ilta':
 				user.opt.evening = true
 				continue
+
 		}
+		
 	}
 
 	// if user did not specify any restaurants,

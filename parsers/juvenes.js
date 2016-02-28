@@ -36,11 +36,15 @@ var parser = function (kitchen, useropt, callback) {
 			// search the titles of meals
 			
 			for (var i in json.MealOptions) {
+
 				var meal = json.MealOptions[i].MenuItems[0].Name
-				var diets = json.MealOptions[i].MenuItems[0].Diets.split(',')
-				var type = json.MealOptions[i].Name
+				
+				if (!meal) continue
 
 				// if user has requested special menus
+
+				var diets = json.MealOptions[i].MenuItems[0].Diets.split(',')
+				var type = json.MealOptions[i].Name
 
 				if (useropt.menu.vege && diets.indexOf('KA') < 0) continue
 				if (useropt.menu.soup && meal.indexOf('keitto') < 0) continue
@@ -54,7 +58,9 @@ var parser = function (kitchen, useropt, callback) {
 
 				if (useropt.menu.salad) continue
 
-				if (meal) meals.push(meal.trim())
+				// if we get this far, add meal to 'meals'
+
+				meals.push(meal.trim())
 
 			}
 

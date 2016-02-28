@@ -40,7 +40,7 @@ module.exports = function (callback, useropt) {
 
 				categories = []
 
-				if (usermenu.salad) categories.push('Warm Salad')
+				if (usermenu.salad) categories.push('Warm Salad', 'Salad')
 				if (usermenu.vege) categories.push('Vegetarian')
 				if (usermenu.soup) categories.push('Soup')
 
