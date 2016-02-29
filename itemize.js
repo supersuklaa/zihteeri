@@ -30,6 +30,7 @@ var itemize = function (msg) {
 		'evening' : false,
 		'tomorrow': false,
 		'today'   : false,
+		'help'    : false,
 		'date': msg.date
 	}
 
@@ -87,6 +88,10 @@ var itemize = function (msg) {
 			case 'iltaruoka':
 			case 'ilta':
 				user.opt.evening = true
+				continue
+
+			case 'help':
+				user.opt.help = true
 				continue
 
 		}

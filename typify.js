@@ -4,6 +4,11 @@ var parser   = require('./parser')
 
 var maxCafes = 3
 
+var helptxt  = 'Ymmärrän: reaktori, newton, hertsi, sååsbar, fusion, '
+    helptxt += 'fusari, konehuone, kasvis, kasviruoka, salaatti, '
+    helptxt += 'keitto, massikeisari, fyffee_löytyy, darrasafka, '
+    helptxt += 'tänään, huomenna, huomen, illalla, iltaruoka, ilta'
+
 module.exports = function (user) {
 
 	// Make a list of desired cafes
@@ -70,7 +75,8 @@ module.exports = function (user) {
 
 	// Start initializing response
 
-	if (cafes.length > 0) addtext('', 0)
+	if (user.opt.help) sendtext(helptxt)
+	else if (cafes.length > 0) addtext('', 0)
 	else sendtext('Ei ravintoloita auki :(')
 
 }
