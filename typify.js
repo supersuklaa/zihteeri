@@ -4,7 +4,7 @@ var parser   = require('./parser')
 
 var maxCafes = 3
 
-var helptxt  = '<b>Ymmärrän:</b> <i>reaktori, newton, hertsi, sååsbar, fusion, '
+var helptxt  = '<b>Ymmärrän:</b> /ruoka + <i>reaktori, newton, hertsi, sååsbar, fusion, '
     helptxt += 'fusari, konehuone, kasvis, kasviruoka, salaatti, '
     helptxt += 'keitto, massikeisari, fyffee_löytyy, darrasafka, '
     helptxt += 'tänään, huomenna, huomen, illalla, iltaruoka, ilta</i>'
