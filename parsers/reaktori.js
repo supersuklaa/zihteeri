@@ -21,6 +21,8 @@ var _cleaner = function (meal) {
 
 var _parsemeals = function (menu, useropt) {
 
+	var time = moment.unix(opt.date).format('HHmm')
+
 	var meals = []
 
 	var categories = [
@@ -43,19 +45,25 @@ var _parsemeals = function (menu, useropt) {
 
 		categories = []
 
-		if (usermenu.salad) categories.push('Salaattilounas')
-		if (usermenu.vege) categories.push('Kasvislounas')
-		if (usermenu.soup) categories.push('Keittolounas')
+		if (time < 1600 && !useropt.tomorrow) {
+
+			if (usermenu.salad) categories.push('Salaattilounas')
+			if (usermenu.vege) categories.push('Kasvislounas')
+			if (usermenu.soup) categories.push('Keittolounas')
+
+		}
 
 	}
+
+	// if it's evenight or user requested evening menu
+
+	else if (time > 1600 && !useropt.tomorrow) categories = ['Iltaruoka']
+
+	if (useropt.evening) categories = ['Iltaruoka']
 
 	// if user requested luxury menu
 
 	if (usermenu.luxus) categories = ['Special']
-
-	// if user requested evening menu
-
-	if (useropt.evening) categories = ['Iltaruoka']
 
 	for (var i in menu) {
 
