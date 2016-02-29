@@ -25,46 +25,52 @@ var parser = function (kitchen, useropt, callback) {
 
 		if (!error) {
 
-			var meals = []
+			try {
 
-			// make valid json
+				var meals = []
 
-			html = html.slice(7, -4)
-			html = html.replace(/\\"/g, '"')
-			var json = JSON.parse(html)
+				// make valid json
 
-			// search the titles of meals
-			
-			for (var i in json.MealOptions) {
+				html = html.slice(7, -4)
+				html = html.replace(/\\"/g, '"')
+				var json = JSON.parse(html)
 
-				var meal = json.MealOptions[i].MenuItems[0].Name || ''
+				// search the titles of meals
 				
-				if (!meal) continue
+				for (var i in json.MealOptions) {
 
-				// if user has requested special menus
+					var meal = json.MealOptions[i].MenuItems[0].Name
 
-				var diets = json.MealOptions[i].MenuItems[0].Diets.split(',')
-				var type = json.MealOptions[i].Name
+					// if user has requested special menus
 
-				if (useropt.menu.vege && diets.indexOf('KA') < 0) continue
-				else if (useropt.menu.soup && meal.indexOf('keitto') < 0) continue
-				else if (useropt.menu.luxus) {
-					if (type.indexOf('FUSION') < 0) {
-						if (type.indexOf('ROHEE XTRA') < 0) continue
+					var diets = json.MealOptions[i].MenuItems[0].Diets.split(',')
+					var type = json.MealOptions[i].Name
+
+					if (useropt.menu.vege && diets.indexOf('KA') < 0) continue
+					else if (useropt.menu.soup && meal.indexOf('keitto') < 0) continue
+					else if (useropt.menu.luxus) {
+						if (type.indexOf('FUSION') < 0) {
+							if (type.indexOf('ROHEE XTRA') < 0) continue
+						}
 					}
+
+					// juvenes' api really doesn't care for salads :( so skip
+
+					else if (useropt.menu.salad) continue
+
+					// if we get this far, add meal to 'meals'
+
+					meals.push(meal.trim())
+
 				}
 
-				// juvenes' api really doesn't care for salads :( so skip
+				callback(null, meals)
 
-				else if (useropt.menu.salad) continue
+			} catch(err) {
 
-				// if we get this far, add meal to 'meals'
-
-				meals.push(meal.trim())
+				callback(err, null)
 
 			}
-
-			callback(null, meals)
 
 		} else {
 
