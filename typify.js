@@ -27,12 +27,15 @@ module.exports = function (user) {
 
 		var texter = function (err, meals) {
 
-			if (!err) {
+			text += '<b>' + cafes[i] + ':</b> '
 
-				text += '<b>' + cafes[i] + ':</b> '
+			if (!err && meals.length > 0) {
 
-				if (meals.length > 0) text += meals.join(', ') + '\n\n'
-				else text += '<i>Ruokalistaa ei saatavilla</i>\n\n'
+				text += meals.join(', ') + '\n\n'
+
+			} else {
+
+				text += '<i>Ruokalistaa ei saatavilla</i>\n\n'
 
 			}
 
