@@ -24,7 +24,10 @@ var _parsemeals = function (menu, useropt) {
 	var time = moment.unix(useropt.date).format('HHmm')
 
 	// if user requested tomorrow's menus
-	if (opt.tomorrow) time = 1200
+	if (useropt.tomorrow) time = 1200
+
+	// if user requested evening menu
+	if (useropt.evening) time = 1620
 
 	var meals = []
 
@@ -48,7 +51,7 @@ var _parsemeals = function (menu, useropt) {
 
 		categories = []
 
-		if (time < 1600 && !useropt.evening && !usermenu.luxus) {
+		if (time < 1600 && !usermenu.luxus) {
 
 			if (usermenu.salad) categories.push('Salaattilounas')
 			if (usermenu.vege) categories.push('Kasvislounas')
@@ -60,7 +63,7 @@ var _parsemeals = function (menu, useropt) {
 
 	// if it's evenight or user requested evening menu
 
-	else if (time > 1600 || useropt.evening) {
+	else if (time > 1600) {
 
 		categories = ['Iltaruoka']
 
