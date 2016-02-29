@@ -9,9 +9,6 @@ module.exports = function (opt) {
 	var time = date.format('HHmm')
 	var day = date.format('dddd').toLowerCase()
 
-	// if it is evening
-	if (time > 1600) opt.evening = true
-
 	// if user requested evening menu
 	if (opt.evening) time = 1620
 

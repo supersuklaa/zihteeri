@@ -1,6 +1,7 @@
 
 var typify    = require('./typify')
 var findOpens = require('./findOpens')
+var moment    = require('moment-timezone').tz.setDefault('Europe/Helsinki')
 
 var itemize = function (msg) {
 
@@ -97,6 +98,10 @@ var itemize = function (msg) {
 		}
 		
 	}
+
+	var time = moment.unix(user.opt.date).format('HHmm')
+
+	if (time > 1600 && !user.opt.tomorrow) user.opt.evening = true
 
 	// if user did not specify any restaurants,
 	// call the findOpens -module
