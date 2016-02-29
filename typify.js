@@ -33,7 +33,7 @@ module.exports = function (user) {
 			if (!err) {
 				
 				if (meals.length > 0) text += meals.join(', ') + '\n\n'
-				else text += errorMsgs.nocat
+				else text += errorMsgs.nocateg
 
 
 			} else {
