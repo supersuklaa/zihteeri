@@ -5,7 +5,6 @@ var errorMsgs = require('./errorMsgs')
 
 var maxCafes = 3
 
-
 module.exports = function (user) {
 
 	// Make a list of desired cafes
