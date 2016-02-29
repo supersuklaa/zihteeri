@@ -1,13 +1,10 @@
 
-var transmit = require('./transmitter')
-var parser   = require('./parser')
+var transmit  = require('./transmitter')
+var parser    = require('./parser')
+var errorMsgs = require('./errorMsgs')
 
 var maxCafes = 3
 
-var helptxt  = '<b>Ymmärrän:</b> /ruoka + <i>reaktori, newton, hertsi, sååsbar, '
-    helptxt += 'fusion, fusari, konehuone, kasvis, kasviruoka, salaatti, '
-    helptxt += 'keitto, massikeisari, fyffee_löytyy, darrasafka, '
-    helptxt += 'tänään, huomenna, huomen, illalla, iltaruoka, ilta</i>'
 
 module.exports = function (user) {
 
@@ -34,13 +31,15 @@ module.exports = function (user) {
 
 			text += '<b>' + cafes[i] + ':</b> '
 
-			if (!err && meals.length > 0) {
+			if (!err) {
+				
+				if (meals.length > 0) text += meals.join(', ') + '\n\n'
+				else text += errorMsgs.nocat
 
-				text += meals.join(', ') + '\n\n'
 
 			} else {
 
-				text += '<i>Ruokalistaa ei saatavilla</i>\n\n'
+				text += errorMsgs.nomenu
 
 			}
 
@@ -75,8 +74,8 @@ module.exports = function (user) {
 
 	// Start initializing response
 
-	if (user.opt.help) sendtext(helptxt)
+	if (user.opt.help) sendtext(errorMsgs.help)
 	else if (cafes.length > 0) addtext('', 0)
-	else sendtext('Ei ravintoloita auki :(')
+	else sendtext(errorMsgs.closed)
 
 }
