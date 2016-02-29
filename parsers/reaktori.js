@@ -45,12 +45,12 @@ var _parsemeals = function (menu, useropt) {
 
 		categories = []
 
-		if (time < 1600 && !useropt.tomorrow) {
+		if (time < 1600 && !useropt.evening) {
 
 			if (usermenu.salad) categories.push('Salaattilounas')
 			if (usermenu.vege) categories.push('Kasvislounas')
 			if (usermenu.soup) categories.push('Keittolounas')
-
+			
 		}
 
 	}
