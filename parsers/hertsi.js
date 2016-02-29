@@ -28,6 +28,7 @@ module.exports = function (callback, useropt) {
 				'Popular',
 				/*'Wok',
 				'Warm Salad',
+				'Salad',
 				'Vitality',*/
 				'Vegetarian'
 			]

@@ -37,7 +37,7 @@ var parser = function (kitchen, useropt, callback) {
 			
 			for (var i in json.MealOptions) {
 
-				var meal = json.MealOptions[i].MenuItems[0].Name
+				var meal = json.MealOptions[i].MenuItems[0].Name || ''
 				
 				if (!meal) continue
 
@@ -47,8 +47,8 @@ var parser = function (kitchen, useropt, callback) {
 				var type = json.MealOptions[i].Name
 
 				if (useropt.menu.vege && diets.indexOf('KA') < 0) continue
-				if (useropt.menu.soup && meal.indexOf('keitto') < 0) continue
-				if (useropt.menu.luxus) {
+				else if (useropt.menu.soup && meal.indexOf('keitto') < 0) continue
+				else if (useropt.menu.luxus) {
 					if (type.indexOf('FUSION') < 0) {
 						if (type.indexOf('ROHEE XTRA') < 0) continue
 					}
@@ -56,7 +56,7 @@ var parser = function (kitchen, useropt, callback) {
 
 				// juvenes' api really doesn't care for salads :( so skip
 
-				if (useropt.menu.salad) continue
+				else if (useropt.menu.salad) continue
 
 				// if we get this far, add meal to 'meals'
 
