@@ -62,6 +62,16 @@ var _parsemeals = function (menu, useropt) {
 
 	}
 
+	// "the basic"
+
+	if (categories.length < 1) {
+		categories = [
+			'Linjasto',
+			'Kasvislounas',
+			'Keittolounas'
+		]
+	}
+
 	for (var i in menu) {
 
 		// skip the unwanted categories
