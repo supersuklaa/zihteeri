@@ -32,10 +32,10 @@ var _parsemeals = function (menu, useropt) {
 	var meals = []
 
 	var categories = [
-		'Linjasto',
+		/*'Linjasto',
 		'Kasvislounas',
 		'Keittolounas',
-		/*'Leipäateria',
+		'Leipäateria',
 		'Salaattilounas',
 		'Special',
 		'Iltaruoka',
@@ -47,29 +47,18 @@ var _parsemeals = function (menu, useropt) {
 
 	var usermenu = useropt.menu
 
-	if (usermenu.salad || usermenu.vege || usermenu.soup) {
-
-		categories = []
-
-		if (time < 1600 && !usermenu.luxus) {
-
-			if (usermenu.salad) categories.push('Salaattilounas')
-			if (usermenu.vege) categories.push('Kasvislounas')
-			if (usermenu.soup) categories.push('Keittolounas')
-			
-		}
-
-	}
-
-	// if user requested luxury menu
-
-	else if (usermenu.luxus) categories = ['Special']
+	if (usermenu.salad) categories.push('Salaattilounas')
+	if (usermenu.vege) categories.push('Kasvislounas')
+	if (usermenu.soup) categories.push('Keittolounas')		
+	if (usermenu.luxus) categories.push('Special')
 
 	// if it's evenight or user requested evening menu
 
-	else if (time > 1600) {
+	if (time > 1600) {
 
-		categories = ['Iltaruoka']
+		if (categories.length > 0) categories = []
+
+		else categories = ['Iltaruoka']
 
 	}
 
