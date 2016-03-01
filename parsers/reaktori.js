@@ -71,7 +71,7 @@ var _parsemeals = function (menu, useropt) {
 
 	// if user requested luxury menu
 
-	else if (usermenu.luxus) categories = ['Special']
+	if (usermenu.luxus) categories = ['Special']
 
 	for (var i in menu) {
 
