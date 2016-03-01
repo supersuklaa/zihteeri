@@ -61,6 +61,10 @@ var _parsemeals = function (menu, useropt) {
 
 	}
 
+	// if user requested luxury menu
+
+	else if (usermenu.luxus) categories = ['Special']
+
 	// if it's evenight or user requested evening menu
 
 	else if (time > 1600) {
@@ -68,10 +72,6 @@ var _parsemeals = function (menu, useropt) {
 		categories = ['Iltaruoka']
 
 	}
-
-	// if user requested luxury menu
-
-	if (usermenu.luxus) categories = ['Special']
 
 	for (var i in menu) {
 
