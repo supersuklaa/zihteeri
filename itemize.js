@@ -55,6 +55,11 @@ var itemize = function (msg) {
 				user.opt.cafeCount++
 				continue
 
+			case 'rohee':
+				user.opt.cafe.konehuone = true
+				user.opt.cafeCount++
+				continue
+
 			case 'kasvis':
 			case 'kasvisruoka':
 				user.opt.menu.vege = true

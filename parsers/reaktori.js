@@ -65,11 +65,11 @@ var _parsemeals = function (menu, useropt) {
 	// "the basic"
 
 	if (categories.length < 1) {
-		categories = [
+		categories.push(
 			'Linjasto',
 			'Kasvislounas',
 			'Keittolounas'
-		]
+		)
 	}
 
 	for (var i in menu) {
