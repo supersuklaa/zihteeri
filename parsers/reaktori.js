@@ -20,8 +20,7 @@ var _cleaner = function (meal) {
 }
 
 var _parsemeals = function (menu, useropt) {
-var _parsemeals = function (menu, useropt) {
-
+	
 	var time = moment.unix(useropt.date).format('HHmm')
 
 	// if user requested tomorrow's menus
