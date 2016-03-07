@@ -20,7 +20,7 @@ var _cleaner = function (meal) {
 }
 
 var _parsemeals = function (menu, useropt) {
-	
+
 	var time = moment.unix(useropt.date).format('HHmm')
 
 	// if user requested tomorrow's menus
@@ -65,11 +65,11 @@ var _parsemeals = function (menu, useropt) {
 	// "the basic"
 
 	else if (categories.length < 1) {
-		categories.push(
+		categories = [
 			'Linjasto',
 			'Kasvislounas',
 			'Keittolounas'
-		)
+		]
 	}
 
 	for (var i in menu) {
