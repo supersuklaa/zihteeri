@@ -108,7 +108,16 @@ var itemize = function (msg) {
 
 	if (user.opt.cafeCount === 0) user.opt = findOpens(user.opt)
 
-	if (user.opt.menu.luxus) user.opt.cafe.newton = false
+	if (user.opt.menu.luxus) {
+		if (user.opt.cafe.newton) {
+			user.opt.cafe.newton = false
+			user.opt.cafeCount--
+		}
+		if (user.opt.cafe.sååsbar) {
+			user.opt.cafe.sååsbar = false
+			user.opt.cafeCount--
+		}
+	}
 
 	// finally send user-object to typifier
 
