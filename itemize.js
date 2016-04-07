@@ -16,8 +16,8 @@ var itemize = function (msg) {
 			'reaktori' : false,
 			'hertsi'   : false,
 			'newton'   : false,
-			'sååsbar'  : false,
 			'fusion'   : false,
+			'sååsbar'  : false,
 			'konehuone': false
 		},
 		'cafeCount': 0,
@@ -107,6 +107,8 @@ var itemize = function (msg) {
 	// call the findOpens -module
 
 	if (user.opt.cafeCount === 0) user.opt = findOpens(user.opt)
+
+	// block newton & sååsbar frum luxury menus
 
 	if (user.opt.menu.luxus) {
 		if (user.opt.cafe.newton) {

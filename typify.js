@@ -3,7 +3,7 @@ var transmit  = require('./transmitter')
 var parser    = require('./parser')
 var errorMsgs = require('./errorMsgs')
 
-var maxCafes = 3
+var maxCafes = 4
 
 module.exports = function (user) {
 
@@ -15,6 +15,7 @@ module.exports = function (user) {
 
 		if (user.opt.cafe[cafe]) {
 
+			// Uppercase the first letter, and lower the rest
 			cafe = cafe.charAt(0).toUpperCase() + cafe.slice(1)
 			cafes.push(cafe)
 
