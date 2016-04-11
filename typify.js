@@ -3,7 +3,7 @@ var transmit  = require('./transmitter')
 var parser    = require('./parser')
 var errorMsgs = require('./errorMsgs')
 
-var maxCafes = 4
+var maxCafes = 3
 
 module.exports = function (user) {
 
